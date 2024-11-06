@@ -1,0 +1,5 @@
+export let friend_name1 = "dooly";
+export var friend_name2 = "ddochi";
+export const friend_name3 = "dauner";
+
+/*export {friend_name1, friend_name2, friend_name3};*/

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>우리팀 소개</title>
+</head>
+<body>
+<h1>우리팀 소개</h1>
+<hr>
+<button onclick="loadTeamInfo('teamName')">우리 팀명</button>
+<button onclick="loadTeamInfo('teamMember')">우리 팀원</button>
+
+<div id="team-info"></div>
+
+<script>
+  function loadTeamInfo(action) {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+          if (xhr.status == 200) {
+              let result = JSON.parse(xhr.responseText);
+              let container = document.getElementById('team-info');
+              container.innerHTML = ''; // 위에 innerHTML이 선언이 되어있어서 이 줄은 필요가 없다
+
+              if (action === 'teamName') {
+                  container.innerHTML = '<h2>우리 팀의 팀명은 ' + result.teamName + '</h2>'; // 위에 innerHTML이 선언이 되어있어서 이 줄은 필요가 없다
+              }
+             else  {
+                  let membersHtml = '<h2>' + result.teamName + '팀의 팀원을 소개합니다</h2>';
+                  membersHtml += '<ul>';
+                  result.teamMember.forEach(function(member) {
+                      membersHtml += '<li>' + member.name + ' : 별명은 ' + member.nicName +
+                                     '이고 좋아하는 음식은 ' + member.food + ' 입니다.</li>';
+                  });
+                  membersHtml += '</ul>';
+                  container.innerHTML = membersHtml;
+              }
+          }
+      };
+      xhr.open('GET', '/myTeam2/' + action, true);
+      xhr.send();
+  }
+</script>
+</body>
+</html>

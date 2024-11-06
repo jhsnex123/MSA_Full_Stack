@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>New Web Project</title>
+	<!-- 회원가입 성공 했을때 클라이언트가 서버한테 완료되었다는 요청알림을 알려주는 구문 성공은 암묵적으로 200, 실패는 302 -->
+<script>
+	function go(target) {
+		let request = new XMLHttpRequest();
+		request.onload = function(){
+			if (request.status == 200) {
+				var result = document.getElementById("result");
+				result.innerHTML += "<h3>"+request.responseText+"</h3>";	
+				let jsonDOM = JSON.parse(request.responseText);
+				alert(jsonDOM.name);
+			}
+		};
+		request.open('GET', '/'+target+'?id=DUKE', true);
+		request.send();
+	}
+</script>
+</head>
+<body>
+	<h1>JavaScript 로 구현하는 AJAX 프로그램 - JSON</h1>
+	<button onclick="go('getJSON1')">getJSON1호출</button>
+	<button onclick="go('getJSON2')">getJSON2호출</button>
+	<button onclick="go('getJSON3')">getJSON3호출</button>
+	<hr>
+	<output id="result"></output>
+</body>
+</html>
+
+
+
+
+
