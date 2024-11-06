@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+@font-face {
+    font-family: 'EF_jejudoldam';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1{
+text-align : center;
+text-shadow : 2px 2px 5px skyblue;
+font-family: 'EF_jejudoldam';
+}
+
+div{
+		width : 80%;
+		height : 200px;
+		margin : 20px auto;
+		padding-top : 30px;
+		padding-bottom : 50px;
+		text-align : center;
+		margin-right: auto;
+	    margin-left: auto;
+	    background-image : linear-gradient(to left, skyblue, white);
+		border : 2px solid skyblue;
+		border-radius : 30px;
+		font-family: 'EF_jejudoldam';
+
+}
+
+body {
+font-family: 'EF_jejudoldam';
+}
+
+
+</style>
+
+</head>
+<body>
+
+<h1>펜션 예약 서비스</h1>
+<hr>
+<div>
+<form action="html실습내용리뷰3url" method="get">
+예약자명 : <input type="text" name="stname" required><br>
+<br>
+에약암호 : <input type="password" name="stpwd" required><br>
+<br>
+룸선택 : 
+둘리 <input type="radio"  name="gender" value="male">
+희동 <input type="radio"  name="gender" value="female">
+도우너 <input type="radio"  name="gender" value="male">
+또치 <input type="radio"  name="gender" value="male"><br>
+<br>
+추가요청사항 : 
+바베큐 <input type="checkbox"  name="stbbq" value="f1">
+수영장 <input type="checkbox"  name="stpool" value="f2">
+낚시 <input type="checkbox"  name="stfishing" value="f3">
+조식 <input type="checkbox"  name="stbreakfast" value="f4"><br>
+<br>
+예약날짜 : 
+<input id=date_of_reservation name=date_of_reservation type=date min="년-09-13" max="2024-12-31">
+<hr>
+<input type="submit" value="보내기">
+<input type="reset" value="다시작성하기">
+</form>
+</div>
+</body>
+</html>

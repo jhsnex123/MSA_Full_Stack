@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	section {
+		border : 1px solid lime;	
+		padding :10%;
+		margin : 0px auto;	
+	}
+	div {
+		border : 1px solid blue;	
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;	
+	}
+	h1 {
+		border : 1px solid red;	
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;		
+	}
+</style>
+
+</head>
+<body>
+  <h2>이벤트 버블링&amp;캡쳐링</h2>
+  <section>
+	<div>
+		<h1>&lt;h1&gt; 태그 영역</h1>
+	</div>
+  </section>
+<script>
+	function clickHandler() {
+		var dom1 = document.getElementsByTagName("h1")[0];
+		var dom2 = document.getElementsByTagName("div")[0];
+		var dom3 = document.getElementsByTagName("section")[0]; //캡처링 하면 화면에 먼저 클릭 이벤트에 뜸  캡처링은 수행속도를 높힐려고 하는 기능
+		var dom4 = document.getElementsByTagName("body")[0];	
+		dom1.addEventListener("click", displayAlert);
+		dom2.addEventListener("click", displayAlert);
+		dom3.addEventListener("click", displayAlert, true); // true값이 들어가면 캡처링 하라는 뜻 false가 들어가면 하지 말라는 뜻
+		dom4.addEventListener("click", displayAlert);
+	}
+	function displayAlert(e) {
+		window.alert(`${e.target.nodeName} 태그 에서 ${e.type} 이벤트 발생!! --- ${e.currentTarget.nodeName} 태그가 이벤트 처리 위임받음`); // 캡처링 누가 썼는지 알 수 있는 기능(e.target)
+	}
+	window.addEventListener("load", clickHandler);
+</script>
+</body>
+</html>
+
+
+
+

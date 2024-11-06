@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+h1{
+text-shadow : 2px 2px 5px green;
+}
+
+#inputround{
+border-radius : 30px;
+margin : 5px;
+padding : 7px;
+}
+
+</style>	
+</head>
+<body>
+<h1>회원 정보를 입력하십시오.</h1>
+<hr>
+
+		<form action="/mvc/ms" method="post">
+			<input id = inputround name="name" placeholder="이름을 입력하세요" required><br> 
+			<input id = inputround name="phone" placeholder="전화번호를 입력하세요" required><br> 
+			<input id = inputround  name="id" placeholder="계정을 입력하세요" required><br> 
+			<input id = inputround name="pwd" placeholder="패스워드를 입력하세요" required><br>
+			<br> 
+			<input id = inputround  type="submit" value="등록"> 
+			<input id = inputround  type="reset" value="재작성">
+			
+		</form>
+
+</body>
+</html>

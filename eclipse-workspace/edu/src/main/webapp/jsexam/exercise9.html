@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script src="util.js"></script>
+	<script>
+		/* 소스명 : exercise9.html
+		 다음에서 제시된 기능들을 자바스크립트로 구현하시오.
+
+		 (1) 구현 함수
+
+		 printObject(p)
+		
+		 - 매개변수 p 에 객체타입이 왔는지 채크하고 'object' 가 아니면 그냥 리턴한다.
+		 - 아규먼트로 전달된 객체에서 tag 속성값, color 속성값 그리고 
+		 msg 속성값을 추출하여 추출된 태그와 칼라 그리고 메시지를
+		 적용하여 도큐먼트 영역에 출력한다.
+
+		 (2) 전역 코드 영역
+		 - printObject(p) 함수를 다섯번 호출하는 기능을 구현한다.
+		 - 호출할 때마다 다른 내용의 객체를 생성해서 전달한다.
+		 객체 생성시에는 객체 리터럴 방식으로 하며
+		 tag 속성 ---> /* HTML 태그명 저장 */
+		/*           color 속성  ---> 칼라값 저장(칼라명 또는 # 시작하는 rgb 값)
+		 msg 속성  ---> 출력 메시지 저장
+		 으로 구성되는 자바스크립트 객체를 생성하며 각 속성들의 값은 임의로 정한다. */
+
+		function printObject(p) {
+			if (typeof (p) !== 'object') {       // typeof는 문자열 검열 ='object'     
+				return;
+			}
+			writeColor(p.msg, p.tag, p.color);
+		}
+		const attribute = [ {
+			tag : 'h1',
+			color : 'red',
+			msg : '프로젝트1'
+		}, {
+			tag : 'h2',
+			color : 'blue',
+			msg : '프로젝트2'
+		}, {
+			tag : 'h3',
+			color : 'green',
+			msg : '프로젝트3'
+		}, {
+			tag : 'h4',
+			color : 'black',
+			msg : '프로젝트4'
+		}, {
+			tag : 'h5',
+			color : 'gray',
+			msg : '프로젝트5'
+		},
+
+		];
+
+		for (let j = 0; j < 5; j++) {
+			printObject(attribute[j]);
+		}
+	</script>
+</body>
+</html>

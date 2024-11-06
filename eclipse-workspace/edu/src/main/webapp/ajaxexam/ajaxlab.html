@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="visitor.css">
+</head>
+<body>
+	<h1>
+		오늘의 날씨 정보-<span id="wtext"></span>
+	</h1>
+	<hr>
+	<h4>
+		기준 시간: <span id="time"></span>
+	</h4>
+	<h4>
+		온도: <span id="temp"></span>
+	</h4>
+	<img id="weatherImg"/>
+	<hr>
+	<div id="output" style="width: 350px; margin: 10px auto"></div>
+
+	<script>
+		window.onload = function() {
+			const url = "content/weather.jsp";
+			const xhr = new XMLHttpRequest();
+			xhr.onload = function() {
+				if (xhr.status == 200) {   
+					const jsonObj = JSON.parse(xhr.responseText);
+					const wtext = jsonObj.wtext;
+					const time = jsonObj.time;
+					const temp = jsonObj.temp;
+
+					document.getElementById('wtext').textContent = wtext;        //textContent 어디 있든 사용할 수 있다
+					document.getElementById('time').textContent = time;
+					document.getElementById('temp').textContent = temp;
+				
+					let weatherImg= "";
+					switch(wtext){
+					case "맑음":
+						weatherImg = "../images/sun.png";
+						break;
+					case "비":
+						weatherImg = "../images/rain.png";
+						break;
+					case "눈":
+						weatherImg = "../images/snow.png";
+						break;
+					case "구름 많음":
+						weatherImg = "../images/cloud.png";
+						break;
+					case "구름 조금":
+						weatherImg = "../images/cloud_sun.png";
+						break;
+					}
+					document.getElementById('weatherImg').src = weatherImg; //document.getElementById('image').src = "/edu/+obj.img";
+				}
+			};
+			xhr.open('GET', url, true);
+			xhr.send();
+		};
+		
+	</script>
+</body>
+</html>

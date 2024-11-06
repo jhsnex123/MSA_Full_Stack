@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+class.lottoform {
+	border: 1px;
+}
+
+h1 {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div class="lottoform">
+		<h1>로또 번호를 맞춰 보세요!!!</h1>
+		<hr>
+		<form method="get" action="/edu/lotto">
+			<h2>
+				1부터 6까지의 숫자를 입력하세요 : <input type="number" name="num" min="1" max="6"
+					required> <input type="image" src="/edu/images/clover.png"
+					alt="clover.png" width="50" height=50>
+			</h2>
+		</form>
+	</div>
+</body>
+</html>

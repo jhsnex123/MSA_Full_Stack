@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    @font-face {
+    font-family: 'RixMomsBlanketR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/RixMomsBlanketR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+	}
+	* {
+		font-family: 'RixMomsBlanketR';
+	}
+	a {		
+		text-decoration : none;
+		font-size : 2em;
+		margin : 10px;
+	}
+</style>
+</head>
+<body onload = 'go()'>
+<a href="http://www.daum.net" onclick="return go();">다음</a>
+<a href="http://www.naver.com/" onclick="return go();">네이버</a>
+<a href="http://www.google.com" onclick="return go();">구글</a>
+
+<script>
+
+
+/* [ 실습 1 ]
+소스명 : exercise10.html
+다음에서 제시된 기능들을 자바스크립트로 구현하시오.
+1부터 3까지의 랜덤값을 추출하여
+ 1이면 다음으로
+ 2이면 네이버로
+ 3이면 구글로 이동하는 기능을 구현해 본다.
+ 단, 무조건 이동하는 것이 아니며 사용자에게 확인받는 윈도우(confirm())를 출력하여
+확인 버튼을 클릭하면 이동하고 취소 버튼이 클릭되면 first.html로 이동한다 */
+
+function go() {  // return true 값
+	
+	const comeback = window.confirm("이동");
+    const randomValue = Math.random();
+    const webName = Math.floor(randomValue * 3) + 1;
+    if(!comeback){
+    	window.location.href="../../first.html";                       
+    }
+    switch(webName){
+    case 1:
+    	window.location.href="http://www.daum.net";
+    	break;
+  
+    case 2:
+    	window.location.href="http://www.naver.com";
+    	break;
+    
+    default:
+    	window.location.href="http://www.google.com";
+    }
+    
+	console.log(comeback ? "취소전?": "취소");
+	return comeback;   	//return false 값
+}
+
+</script>
+</body>
+</html>

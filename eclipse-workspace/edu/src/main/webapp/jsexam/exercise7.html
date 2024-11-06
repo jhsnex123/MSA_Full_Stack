@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- [ 실습 3 ]
+
+소스명 : exercise7.html
+다음에서 제시된 기능들을 자바스크립트로 구현하시오.
+
+(1) util.js 에 정의된 함수를 사용하여 구현한다.
+(2) 매개변수로 년, 월, 일을 아규먼트로 받아 요일명(일요일~토요일)을 리턴하는 함수 getKorDay(y, m, d)를 만든다.
+     3개의 아규먼트중 한 개라도 Number 타입이 아니면 undefined 를 리턴한다.
+(3) 전역 코드 영역에서는 프롬프트 창을 이용해서 년, 월, 일을 각각 입력받아 getKorDay()를 호출하고 
+     리턴 결과가 undefined 타입이면 "결과 없음" 을 h1 태그와 빨간색으로 도큐먼트 영역에 출력한다.
+     아니면 도큐먼트 영역에 h1 태그와 파란색으로 다음과 같이 출력한다.
+
+   xxxx년 xx월 xx일은 X요일입니다  -->
+   
+   <script src="util.js"></script>
+	<script>
+	 writeColor('자바스크립트 실습(7)', 'h1', 'blue');
+	 hr();
+		
+	 function getKorDay(y, m, d){
+		if(typeof y !=='number'|| typeof m !=='number'||typeof d !=='number'){
+			return undefined;
+			}
+		var date = new Date(y, m-1, d);
+		 	if (isNaN(date))
+				return undefined;
+		var dayname = ["일","월","화","수","목","금","토"];
+		return dayname[date.getDay()];
+		}
+	 
+		var Year = Number(window.prompt("년"));
+		var Month = Number(window.prompt("월"));
+		var Day = Number(window.prompt("일"));
+		var DayName = getKorDay(Year, Month, Day);
+		if(DayName === undefined){
+			writeColor('결과없음','h1','green');
+		}	
+		else{
+			writeColor(Year+'년'+Month+'월'+Day+'일'+DayName+'요일입니다','h2','blue');
+		}
+	</script>
+</body>
+</html>

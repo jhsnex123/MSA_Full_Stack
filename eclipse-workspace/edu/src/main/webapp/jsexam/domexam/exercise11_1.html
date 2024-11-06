@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1>이벤트 모델-인라인</h1>
+	<hr>
+	<button id="bt1" onclick="update1();">빨강색</button>
+	<button id="bt2" onclick="update2();">파랑색</button>
+	<button id="bt3" onclick="update3();">노랑색</button><br>
+	<hr>
+	<h3 id="dateDisplay"></h3>
+	<script>
+	window.onload=function() {
+		const date = new Date();
+		const month = date.getMonth()+1;
+		const day = date.getDate();          // 자바스크립트 date 검색
+        document.getElementById('dateDisplay').innerText = `오늘은 ${month}월 ${day}일입니다`;
+        
+	};
+	
+	function update1(){
+		dateDisplay.style.color='red';
+	}
+	function update2(){
+		dateDisplay.style.color='blue';
+	}
+	function update3(){
+		dateDisplay.style.color='yellow';
+	}
+	
+	</script>
+</body>
+</html>

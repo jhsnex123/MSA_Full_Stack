@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>"자바스크립트 실습(5)"</h1>
+<hr>
+<!-- [ 실습 1 ]
+
+소스명 : exercise5.html
+다음에서 제시된 기능들을 자바스크립트로 구현하시오.
+
+(1) util.js 에 정의된 함수를 사용하여 구현한다.
+(2) 웹 페이지의 제목을 <h1> 태그와 함께 "자바스크립트 실습(5)" 이라고 원하는 칼라로 출력한다.
+ 
+(3) 다음 기능을 처리하는 함수 sum()를 구현해 본다.
+	- 매개변수를 한 개 선언한다.
+	- 매개변수에 아무값도 전달되지 않으면 리턴값 없이 리턴한다.
+	- 1 부터 매개변수에 전달된 숫자값 까지 합을 구하여 리턴한다.
+
+(4) 0부터 5사이의 난수를 하나 추출하여 아규먼트로 전달하면서 sum() 함수를 호출하는데
+    0이 추출된 경우에는 아규먼트 없이 호출한다.
+    호출한 다음 
+    리턴값이 있으면 다음 형식으로 브라우저의 도큐먼트 영역에 <h2> 태그와 함께 출력하고
+
+	호출 결과값 : XX
+
+    리턴값이 없으면 다음과 같이 브라우저의 도큐먼트 영역에 <h3> 태그와 함께 출력한다.
+
+	결과값이 없어요!!	      
+     
+(5) 4번을 5번 반복한다. -->
+<script src="util.js"></script>
+<script>
+writeColor('자바스크립트 실습(5)', 'h1', 'red');
+	function sum(n) {
+		var result = 0;
+		if(n === undefined){
+			return;
+		}
+		for (var i = 1; i <= n ; i++) {
+			result = i+result;
+			return result;
+			
+	}
+	}
+		function rand() {
+			return Math.floor(Math.random()*6);
+		}
+		function print() {
+			var num = rand();
+			if(num === 0){
+				if(sum() === undefined){
+					writeColor("결과값이 없어요!!","h3","red");
+				}
+			}
+			else{
+				writeColor("호출 결과값 "+sum(num),"h2","blue");
+			}
+		}
+		for (var j =0; j<5; j++){
+			print();
+		}
+</script>
+</body>
+</html>

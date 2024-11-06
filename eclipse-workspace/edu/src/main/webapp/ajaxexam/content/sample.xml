@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<testxml>         
+	<name>자바스크립트</name>            <!--엔터문자까지 자식으로 포함해 총 7개! -->
+	<age>27</age>
+	<kind>웹앱개발 전용 OOP 언어</kind>
+</testxml>
+	

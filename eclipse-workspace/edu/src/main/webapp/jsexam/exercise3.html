@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1 {
+color : blue;
+}
+
+</style>
+</head>
+<body>
+<h1>자바스크립트 실습(3)</h1>
+<hr>
+
+<script>
+/* [ 문제 3 ]
+소스명 : exercise3.html
+다음에서 제시된 기능들을 자바스크립트로 구현하시오.
+
+(1)<body> 태그에 첫번째 제목크기로 "자바스크립트 실습(3)" 을 출력하도록 작성하고 수평선을 출력하는 
+    태그도 작성한다. 이 때 제목은 파란색이 되도록 한다.
+(2) window.prompt() 를 사용해서 사용자로 부터 숫자를 입력 받는다.
+(3) 입력된 숫자는 자바스크립트 콘솔창에 출력한다.(출력형식 : "입력된 숫자 : X")
+(4) 1부터 이 숫자까지의 값을 더해서 브라우저의 도큐먼트 영역에 <h2> 태그와 함께 출력한다.
+    "1부터 xx 까지의 합은 xxx 입니다."
+(5) 입력된 데이터가 null 거나, "" 이면  "비어있는 입력" 이라는 메시지를
+     브라우저의 도큐먼트 영역에 <h3> 태그와 함께 출력한다.
+(6) 입력된 데이터가 숫자가 아니면 "숫자가 아닌 입력" (izNUN)이라는 메시지를
+     브라우저의 도큐먼트 영역에 <h3> 태그와 함께 출력한다. */
+  
+     var num = window.prompt("숫자를 한 개를 입력하세요");
+ 	 console.log("입력된 숫자 : " +num);
+ 	 var sum = 0;
+ 
+ 	if(num == '' || num == null ) {
+		document.writeln("<h3>비어있는 입력</h3>");
+	} else if(isNaN(num)){
+		document.writeln("<h3>숫자가 아닌 입력</h3>");
+		
+	} else {
+		 for(var i = 1; i<=parseInt(num); i++){
+		 		sum = i+sum;
+		 	 }
+		 	 document.writeln("<h2>1부터 "+num+"까지의 합은"+sum+"입니다.</h2>");
+	}
+ 	
+</script>
+<h2></h2>
+<h3></h3>
+</body>
+</html>

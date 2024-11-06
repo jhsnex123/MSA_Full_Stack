@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../util.js"></script>
+</head>
+<body>
+<h1 id="test">DOM 객체를 찾자</h1>
+<h1>그래 DOM 객체를 찾자</h1>
+<hr>
+<script>
+	let dom = document.getElementsByTagName("h1");
+	writeNewLine(dom);
+	writeNewLine(dom.length);  //그냥 배열
+	writeNewLine(dom[0]);  //h1 정보
+	writeNewLine(dom[0].textContent); // innerText h1정보
+	writeNewLine(dom[0].innerHTML); // h1정보        
+	writeNewLine(dom[1]);
+	writeNewLine(dom[1].textContent); // innerText -> 애 안쓰고 textContent로 통일
+	writeNewLine(dom[1].innerHTML);
+	writeNewLine("------------------------------");
+	dom = document.getElementById("test");          // getElementbyid 엘먼트 id 값을 찾는것 어떤 태그나 변수에 있는지 상관없음 id라는 값을 찾는거임 (ex .test)
+	writeNewLine(dom);
+	writeNewLine(dom.textContent);
+	window.setTimeout(function() {        // 간격없이 바로 호출 settimeout
+		dom.textContent = "오늘은 월요일";         // dom 객체 형성할때 형태가 dom. ,,,   이런식으로 만들어줘야함       
+		dom.style.color ="red";
+		dom.style.backgroundColor ="lime"; // background-color, font-weight -> fontWeight                                               
+		dom.style["background-color"] ="yellow";     // style을 줄 때 _ -> 이거로 주거나 없애고 다음 앞글자에 대문자로 처리 해야함
+	}, 5000);
+</script>
+</body>
+</html>

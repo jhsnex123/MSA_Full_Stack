@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1{
+color : orange;
+text-shadow : 5px 5px 5px lightgray;
+}
+</style>
+</head>
+<body>
+<h1>자바스크립트로 구현하는 구구단</h1>
+<hr>
+
+<script>
+/* (1)<body> 태그에 첫번째 제목크기로 "자바스크립트로 구현하는 구구단" 을 출력하도록 
+작성하고 수평선을 출력하는 태그도 작성한다. 이 때 제목은 임의의 색과 쉐도우를 지정한다.
+(2) 프롬프트 창으로 1 부터 9사이의 숫자를 한 개 입력 받는다.(숫자만 입력받는다고 가정한다.)
+(3) 입력된 숫자가 1~9 사이가 아니면 다시 입력받는다.
+(4) 입력된 숫자에 해당하는 단의 구구단을 행단위로 출력한다. 도큐먼트 영역에 출력한다. */
+
+for(var i = 2; i <= 9 ; i++){                                 //외부for문 2~ 9까지 반복값
+	document.writeln(i + "단");
+	document.writeln("<br>");
+	for(var j = 1; j <= 9 ; j++){                             //내부 for문 1~9까지 반복값
+	document.writeln(i + " * "+ j + " = " +(i*j));
+	document.writeln("<br>");
+	}
+	
+}
+
+</script>
+</body>
+</html>
