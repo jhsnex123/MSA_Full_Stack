@@ -7,7 +7,7 @@
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	</head>
 	<body>
-    <h2>슬롯을 이용한 데이터 전달</h2>
+    <h2>컴포넌트의 라이프사이클</h2>
     <div id="app">
 			<myb v-if="myVisible">{{message}}</myb>
       <hr>
@@ -16,7 +16,7 @@
     <script>
       const {createApp} = Vue;
 
-      const MyButton = {
+      const MyButton = {             // 마이버튼 컴포넌트 라이프사이클 훅
 				template: '<button><slot></slot></button>',		
         beforeCreate() {          
           console.log('[MyButton] beforeCreate() 호출!')
@@ -43,10 +43,10 @@
           console.log('[MyButton] unmounted() 호출!')
         }       
 			}
-			createApp({
+			createApp({ //vue 인스턴스
 				data() {
 					return { 
-						message : '둘리',myVisible: true
+						message : '둘리',myVisible: true   // vue 객체를 바꿀러면 .bind(this)에서 바꿔야함
 					}
 				},
 				components: {
@@ -59,14 +59,14 @@
           console.log('created() 호출!', this.message)
         },
         beforeMount() {        
-          console.log('beforeMount() 호출!', this.$el) 
+          console.log('beforeMount() 호출!', this.$el) //$가 붙으면 undifind가 나옴
           setTimeout(function () {
             console.log("5초 지나감... Vue 데이터 변경~~~~~~~~");
-            this.message = "도우너";
-          }.bind(this), 5000);
+            this.message = "도우너";      //this가 window 객체 비동기처리할 때는 this 사용 신중히
+          }.bind(this), 5000);         // .bind(this) vue 객체 this
         },
         mounted() {       
-          console.log('mounted() 호출!', this.$el)
+          console.log('mounted() 호출!', this.$el) //$ 가 붙으면 내장함수이고 컨테이너 안에 있는 dom객체를 참조함
         },
         beforeUpdate() {
           console.log('beforeUpdate() 호출!')
