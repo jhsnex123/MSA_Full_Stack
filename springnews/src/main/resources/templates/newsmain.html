@@ -22,23 +22,11 @@
   <tr th:each="news, iterStat : ${newsList}">
   <table class="table table-striped">
     <tr>
-      <th scope="row">1</th>
       <th scope="row" th:text="${iterStat.index + 1}">1</th><!-- 번호 -->
       <td th:text="${news.title}">제목</td> <!-- 제목 -->
       <td th:text="${news.writer}">작성자</td> <!-- 작성자 -->
       <td th:text="${news.writedate}">작성일</td> <!-- 작성일 -->
       <td th:text="${news.cnt}">조회수</td> <!-- 조회수 -->
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
     </tr>
   </table>
   </tbody>

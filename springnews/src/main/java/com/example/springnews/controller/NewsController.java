@@ -43,7 +43,7 @@ public class NewsController {
     public String createNews(@ModelAttribute("news") News news, BindingResult bindingResult,Model model) {
         if(bindingResult.hasErrors()) {
             model.addAttribute("news", news);
-            return "create";
+            return "/newsmain/create";
         }
 
 /*      // 1. dto를 엔티티로 변환
@@ -53,8 +53,10 @@ public class NewsController {
         // 2. 리파지터리로 엔티티를 DB에 저장
         News saved = newsRepository.save(news);
         log.info(saved.toString());
-        return "redirect:/newsmain" + saved.getId(); // 저장 후 메인 페이지로 리디렉션
+        return "redirect:/newsmain";
+        //return "redirect:/newsmain" + saved.getId(); // 저장 후 메인 페이지로 리디렉션
     }
+
 
 
 
