@@ -76,6 +76,10 @@ public class JPA_NewsRepositoryTest {
     void newsUpdate() {
         System.out.println("UPDATE 메서드 진입");
         News news = newR.findById(9);
+        if(news == null) {
+            System.out.println("수정할 게시글 없음");
+            return; // 수정할 게시글이 없으면 메서드 종료
+        }
         news.setContent("레알마드리드 공격수");
         news.setTitle("레알마드리드");
         news.setWriter("이스코");

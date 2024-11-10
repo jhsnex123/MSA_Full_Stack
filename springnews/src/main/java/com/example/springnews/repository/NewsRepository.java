@@ -8,7 +8,7 @@ public interface NewsRepository extends JpaRepository<News,Integer> {
     // 2.뉴스글 전체 읽기
         // findall 부모로 만들기
     // 3.id 로 글 한 개 읽기
-//    public News findById(int id);
+    public News findById(int id);
         // find id 부모로 만들기
     // 4.뉴스글 삭제와 변경 등과 관련된 메서드
        // delete all 부모,

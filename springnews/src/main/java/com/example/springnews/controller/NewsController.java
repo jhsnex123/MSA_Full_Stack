@@ -58,7 +58,7 @@ public class NewsController {
 @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
         // 수정할 데이터 가져오기
-        Optional<News> news = newsRepository.findById(id);
+        News news = newsRepository.findById(id);
 
         // 모델에 데이터 등록하기
         model.addAttribute("news", news);
@@ -78,7 +78,7 @@ public class NewsController {
 
     // 2. 엔티티를 DB로 저장하기
     // 2-1. DB에서 기존 데이터 가져오기
-    Optional<News> target = newsRepository.findById(newsEntity.getId());
+    News target = newsRepository.findById(newsEntity.getId());
 
     // 2-2. 기존 데이터 값을 갱신하기
     if (target != null) {
