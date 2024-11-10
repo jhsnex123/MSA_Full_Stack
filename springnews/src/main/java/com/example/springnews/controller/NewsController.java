@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -57,7 +55,39 @@ public class NewsController {
         //return "redirect:/newsmain" + saved.getId(); // 저장 후 메인 페이지로 리디렉션
     }
 
+@GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+        // 수정할 데이터 가져오기
+        Optional<News> news = newsRepository.findById(id);
 
+        // 모델에 데이터 등록하기
+        model.addAttribute("news", news);
+
+        //뷰 페이지 설정하기
+        return "newsedit";
+}
+
+@PostMapping("/update")
+    public String update(NewsForm newsForm) {
+    log.info(newsForm.toString());
+
+
+    // 1. DTO를 엔티티로 변환하기
+    News newsEntity = newsForm.toEntity();
+    log.info(newsEntity.toString());
+
+    // 2. 엔티티를 DB로 저장하기
+    // 2-1. DB에서 기존 데이터 가져오기
+    Optional<News> target = newsRepository.findById(newsEntity.getId());
+
+    // 2-2. 기존 데이터 값을 갱신하기
+    if (target != null) {
+        newsRepository.save(newsEntity);
+    }
+
+    // 3. 수정 결과 페이지로 리다이렉트 하기
+    return "redirect:/newsmain";
+}
 
 
 }

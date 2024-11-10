@@ -28,4 +28,5 @@ public class News {
     private java.sql.Date writedate;
     private int cnt;
 
+
 }
