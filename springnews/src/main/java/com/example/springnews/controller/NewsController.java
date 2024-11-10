@@ -59,6 +59,9 @@ public class NewsController {
     public String edit(@PathVariable int id, Model model) {
         // 수정할 데이터 가져오기
         News news = newsRepository.findById(id);
+        news.setCnt(news.getCnt() + 1);
+        newsRepository.save(news);
+
 
         // 모델에 데이터 등록하기
         model.addAttribute("news", news);
@@ -68,13 +71,12 @@ public class NewsController {
 }
 
 @PostMapping("/update")
-    public String update(NewsForm newsForm) {
-    log.info(newsForm.toString());
-
+    public String update(@Valid NewsForm newsForm, BindingResult bindingResult, Model model) {
+    log.info("입력 폼 값"+newsForm.toString());
 
     // 1. DTO를 엔티티로 변환하기
     News newsEntity = newsForm.toEntity();
-    log.info(newsEntity.toString());
+    log.info("Entity 변환 값"+newsEntity.toString());
 
     // 2. 엔티티를 DB로 저장하기
     // 2-1. DB에서 기존 데이터 가져오기
@@ -83,11 +85,26 @@ public class NewsController {
     // 2-2. 기존 데이터 값을 갱신하기
     if (target != null) {
         newsRepository.save(newsEntity);
+        // 데이터 갱신
+        target.setTitle(newsEntity.getTitle());
+        target.setContent(newsEntity.getContent());
+        target.setWriter(newsEntity.getWriter());
+        // writedate나 cnt는 보통 수정 시 변경하지 않는다.
+
+        newsRepository.save(target);
+        //return "redirect:/newsmain/" + target.getId();
+        return "redirect:/newsmain";
+    } else {
+        return "redirect:/newsmain";
     }
 
-    // 3. 수정 결과 페이지로 리다이렉트 하기
-    return "redirect:/newsmain";
-}
+    }
 
-
+    @DeleteMapping("/delete")
+    public String delete (@Valid NewsForm newsForm, BindingResult bindingResult, Model model){
+        // newsedit 삭제 버튼
+        // id 받아오기
+        // 찾아서 고놈 삭제
+        return "newsmain";
+    }
 }

@@ -1,8 +1,10 @@
 package com.example.springnews.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.ToString;
 
+@Data
 @AllArgsConstructor
 @ToString
 public class NewsForm {

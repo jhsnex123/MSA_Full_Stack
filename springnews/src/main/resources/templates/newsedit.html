@@ -16,16 +16,15 @@
 
   <div>
     <label class="form-label">내용</label>
-    <textarea class="form-control" rows="3" name="content" th:value="${news.content}" placeholder="내용을 입력하세요"></textarea>
+    <textarea class="form-control" rows="3" id="content" name="content"  th:text="${news.content}" placeholder="내용을 입력하세요" required></textarea>
   </div>
 
   <div>
     <label class="form-label">작성자</label>
-    <input type="text" class="form-control" name="writer" th:value="${news.writer}" placeholder="작성자를 입력하세요">
+    <input type="text" class="form-control" id="writer" name="writer" th:value="${news.writer}" placeholder="작성자를 입력하세요" required>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
-
   <!-- 수정 후 다시 해당 뉴스 페이지로 이동 -->
   <a th:href="@{/newsmain/{id}(id=${news.id})}" class="btn btn-secondary">Back</a>
 
