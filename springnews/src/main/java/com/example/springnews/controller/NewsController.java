@@ -10,9 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Slf4j
 @Controller
@@ -100,11 +101,17 @@ public class NewsController {
 
     }
 
-    @DeleteMapping("/delete")
-    public String delete (@Valid NewsForm newsForm, BindingResult bindingResult, Model model){
-        // newsedit 삭제 버튼
-        // id 받아오기
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable int id, RedirectAttributes rttr){
+        // 1.삭제할 대상 가져오기
+        newsRepository.deleteById(id); // ID에 해당하는 뉴스 삭제
+        //log.info(newsRepository.toString());
+
+        // 2. 대상 엔티티 삭제하기
+        rttr.addFlashAttribute("msg","뉴스가 삭제됐습니다!");
+
         // 찾아서 고놈 삭제
-        return "newsmain";
+        return "redirect:/newsmain"; // 삭제 후 메인 뉴스 페이지로 리다이렉트
     }
+
 }

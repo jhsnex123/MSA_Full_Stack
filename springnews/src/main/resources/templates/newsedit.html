@@ -5,8 +5,8 @@
   <title>뉴스 수정 데이터</title>
 </head>
 <body>
-<form class="container" th:action="@{/newsmain/update}" method="post">
 
+<form class="container" th:action="@{/newsmain/update}" method="post">
   <input name="id" type="hidden" th:value="${news.id}">
 
   <div>
@@ -25,9 +25,16 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
+
   <!-- 수정 후 다시 해당 뉴스 페이지로 이동 -->
   <a th:href="@{/newsmain/{id}(id=${news.id})}" class="btn btn-secondary">Back</a>
-
 </form>
+
+<!-- Delete 버튼 - form을 이용하여 DELETE 요청 -->
+<form th:action="@{/newsmain/{id}/delete(id=${news.id})}" method="post" style="display: inline;">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
 </body>
 </html>
